@@ -1,0 +1,5 @@
+# Prisma Migrate lockfile v1
+
+20200901131335-create_users_and_courses_table
+20200902095258-add_password_to_user_table
+20200902111133-add_nullable_constrains_to_users_table

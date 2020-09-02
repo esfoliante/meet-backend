@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url = "***"
+}
+
+model Course {
+  id   Int    @default(autoincrement()) @id
+  name String
+  slug String
+  User User[]
+}
+
+model User {
+  id        Int      @default(autoincrement()) @id
+  createdAt DateTime @default(now())
+  email     String   @unique
+  birthDate DateTime
+  name      String
+  gender    String
+  courseId  Int?
+  password  String
+  Course    Course?  @relation(fields: [courseId], references: [id])
+
+  @@index([courseId], name: "courseId")
+}
