@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = env("DATABASE_URL")
+  url = "***"
 }
 
 model Course {
@@ -16,8 +16,8 @@ model Course {
 
 model Role {
   id       Int    @default(autoincrement()) @id
-  name     String @unique
-  slug     String @unique
+  name     String
+  slug     String
   priority Int    @default(0)
   User     User[]
 }
@@ -36,5 +36,4 @@ model User {
   Role      Role     @relation(fields: [roleId], references: [id])
 
   @@index([courseId], name: "courseId")
-
 }

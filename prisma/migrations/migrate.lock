@@ -3,3 +3,5 @@
 20200901131335-create_users_and_courses_table
 20200902095258-add_password_to_user_table
 20200902111133-add_nullable_constrains_to_users_table
+20200902160947-create_roles_table
+20200902161555-add_unique_tags_to_roles_table

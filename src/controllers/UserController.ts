@@ -1,4 +1,4 @@
-import { Request, response, Response } from 'express';
+import { Request, Response } from 'express';
 import { PrismaClient } from '@prisma/client';
 
 import bcrypt from 'bcrypt';
@@ -42,10 +42,15 @@ export default {
 				gender: gender,
 				password: password_hash,
 				birthDate: birthDate,
+				Role: {
+					connect: {
+						name: 'user',
+					},
+				},
 			},
 		});
 
-		return response.status(201).json(user);
+		return res.status(201).json(user);
 	},
 
 	async login(req: Request, res: Response) {
@@ -58,6 +63,9 @@ export default {
 		const user = await prisma.user.findOne({
 			where: {
 				email: email,
+			},
+			include: {
+				Role: true,
 			},
 		});
 
